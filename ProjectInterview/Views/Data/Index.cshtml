@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "Upload & Display CSV";
+    var excelData = ViewBag.ExcelData as List<DataEntry>;
+
+    var minValue = excelData?.Min(e => (double?)e.MarketPrice) ?? 0;
+    var maxValue = excelData?.Max(e => (double?)e.MarketPrice) ?? 0;
+    var avgValue = excelData != null && excelData.Any() ? (double)excelData.Average(e => e.MarketPrice) : 0;
+
+}
+
+<h2 class="text-center my-4">Upload CSV File</h2>
+
+<div class="container">
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger text-center">
+            <strong>Error:</strong> @ViewBag.ErrorMessage
+        </div>
+    }
+    <form asp-action="UploadCsv" asp-controller="Data" method="post" enctype="multipart/form-data" class="text-center mb-4">
+        <div class="input-group mb-3">
+            <input type="file" name="file" class="form-control" required />
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+    </form>
+
+    @if (excelData != null)
+    {
+        <h3 class="text-center">CSV Data</h3>
+        <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+            <table id="dataTable" class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th onclick="sortTable(0, 'date', this)">Date <span>↑↓</span></th>
+                        <th onclick="sortTable(1, 'numeric', this)">Market Price <span>↑↓</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in excelData)
+                    {
+                        <tr>
+                            <td>@item.Date</td>
+                            <td>@item.MarketPrice</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="text-center mt-4">Market Price Statistics</h3>
+        <div class="text-center">
+            <strong>Minimum Value:</strong> @minValue <br />
+            <strong>Maximum Value:</strong> @maxValue <br />
+            <strong>Average Value:</strong> @avgValue <br />
+        </div>
+
+        <h3 class="text-center mt-4">Market Price Charts</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <canvas id="combinedChart"></canvas>
+            </div>
+            <div class="col-md-6">
+                <canvas id="expChart"></canvas>
+            </div>
+        </div>
+    }
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let minValue = @minValue;
+        let maxValue = @maxValue;
+        let avgValue = @avgValue;
+
+        console.log("Min Value:", minValue);
+        console.log("Max Value:", maxValue);
+        console.log("Avg Value:", avgValue);
+
+        let ctx1 = document.getElementById("combinedChart").getContext("2d");
+        new Chart(ctx1, {
+            type: "bar",
+            data: {
+                labels: ["Min Price", "Max Price", "Avg Price"],
+                datasets: [{
+                    label: "Market Prices",
+                    data: [minValue, maxValue, avgValue],
+                    backgroundColor: [
+                        "rgba(255, 99, 132, 0.6)",
+                        "rgba(54, 162, 235, 0.6)",
+                        "rgba(75, 192, 192, 0.6)"
+                    ],
+                    borderColor: [
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(75, 192, 192, 1)"
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    });
+    function parseDate(dateStr) {
+        let parts = dateStr.split(/[\/\-]/);
+        if (parts.length === 3) {
+            let day = parseInt(parts[0], 10);
+            let month = parseInt(parts[1], 10) - 1;
+            let year = parseInt(parts[2], 10);
+            return new Date(year, month, day);
+        }
+        return new Date(dateStr);
+    }
+
+    function sortTable(columnIndex, type, header) {
+        let table = document.getElementById("dataTable");
+        let tbody = table.querySelector("tbody");
+        let rows = Array.from(tbody.rows);
+        let ascending = header.dataset.sortOrder !== "asc";
+
+        rows.sort((rowA, rowB) => {
+            let cellA = rowA.cells[columnIndex].innerText.trim();
+            let cellB = rowB.cells[columnIndex].innerText.trim();
+
+            if (type === 'numeric') {
+                return ascending ? (parseFloat(cellA) - parseFloat(cellB)) : (parseFloat(cellB) - parseFloat(cellA));
+            } else if (type === 'date') {
+                let dateA = parseDate(cellA);
+                let dateB = parseDate(cellB);
+                return ascending ? dateA - dateB : dateB - dateA;
+            } else {
+                return ascending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+            }
+        });
+
+        tbody.innerHTML = "";
+        rows.forEach(row => tbody.appendChild(row));
+
+        header.dataset.sortOrder = ascending ? "asc" : "desc";
+
+        document.querySelectorAll("thead th span").forEach(span => span.innerHTML = "↑↓");
+        header.querySelector("span").innerHTML = ascending ? "↑" : "↓";
+    }
+
+</script>
