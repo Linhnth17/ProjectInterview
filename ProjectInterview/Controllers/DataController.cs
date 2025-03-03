@@ -25,46 +25,54 @@ namespace ProjectInterview.Controllers
         }
 
         // Handles the file upload and CSV parsing
+        //[HttpPost]
+        //public ActionResult UploadCsv(IFormFile file)
+        //{
+        //    if (file != null && file.Length > 0)
+        //    {
+        //        // Validate the uploaded file type (only CSV allowed)
+        //        if (Path.GetExtension(file.FileName).ToLower() != ".csv")
+        //        {
+        //            _logger.LogWarning("Invalid file uploaded: {FileName}", file.FileName);
+        //            ViewBag.ErrorMessage = "Please upload a valid CSV file.";
+        //            return View("Index");
+        //        }
+
+        //        try
+        //        {
+        //            _logger.LogInformation("Processing file: {FileName}", file.FileName);
+
+        //            // Parse the CSV file
+        //            List<DataEntry> dataList = _csvService.ParseCsvFile(file.OpenReadStream());
+        //            ViewBag.ExcelData = dataList;
+
+        //            // Log success
+        //            _logger.LogInformation("{RecordCount} records parsed from {FileName}.", dataList.Count, file.FileName);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Log error if something goes wrong
+        //            _logger.LogError(ex, "Error processing the CSV file: {FileName}", file.FileName);
+        //            ViewBag.ErrorMessage = "An error occurred while processing the CSV file.";
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Handle the case where no file is uploaded
+        //        _logger.LogWarning("No file uploaded.");
+        //        ViewBag.ErrorMessage = "Please upload a valid CSV file.";
+        //    }
+
+        //    // Return the Index view with data or error message
+        //    return View("Index");
+        //}
+
         [HttpPost]
-        public ActionResult UploadCsv(IFormFile file)
+        public List<DataEntry> UploadCsv1(IFormFile file)
         {
-            if (file != null && file.Length > 0)
-            {
-                // Validate the uploaded file type (only CSV allowed)
-                if (Path.GetExtension(file.FileName).ToLower() != ".csv")
-                {
-                    _logger.LogWarning("Invalid file uploaded: {FileName}", file.FileName);
-                    ViewBag.ErrorMessage = "Please upload a valid CSV file.";
-                    return View("Index");
-                }
-
-                try
-                {
-                    _logger.LogInformation("Processing file: {FileName}", file.FileName);
-
-                    // Parse the CSV file
-                    List<DataEntry> dataList = _csvService.ParseCsvFile(file.OpenReadStream());
-                    ViewBag.ExcelData = dataList;
-
-                    // Log success
-                    _logger.LogInformation("{RecordCount} records parsed from {FileName}.", dataList.Count, file.FileName);
-                }
-                catch (Exception ex)
-                {
-                    // Log error if something goes wrong
-                    _logger.LogError(ex, "Error processing the CSV file: {FileName}", file.FileName);
-                    ViewBag.ErrorMessage = "An error occurred while processing the CSV file.";
-                }
-            }
-            else
-            {
-                // Handle the case where no file is uploaded
-                _logger.LogWarning("No file uploaded.");
-                ViewBag.ErrorMessage = "Please upload a valid CSV file.";
-            }
-
-            // Return the Index view with data or error message
-            return View("Index");
+            List<DataEntry> dataList = _csvService.ParseCsvFile(file.OpenReadStream());
+            return dataList;
         }
+
     }
 }

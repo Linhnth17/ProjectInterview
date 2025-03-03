@@ -23,8 +23,6 @@ namespace ProjectInterview.Services
 
             try
             {
-                _logger.LogInformation("Starting CSV file parsing.");
-
                 // Reads the CSV file line by line
                 using (var reader = new StreamReader(fileStream))
                 {
@@ -41,32 +39,23 @@ namespace ProjectInterview.Services
                         if (isHeader)
                         {
                             isHeader = false;
-                            _logger.LogInformation("Skipping header line.");
                             continue;
                         }
 
                         var values = line.Split(',');
 
                         // Log data being parsed
-                        _logger.LogInformation("Parsing line {LineNumber}: {Line}", lineNumber, line);
-
                         // Ensure the line has enough values to parse
                         if (values.Length >= 2)
                         {
-                            try
+
+                            // Add parsed data to the list (Date and MarketPrice)
+                            dataList.Add(new DataEntry
                             {
-                                // Add parsed data to the list (Date and MarketPrice)
-                                dataList.Add(new DataEntry
-                                {
-                                    Date = values[0],
-                                    MarketPrice = decimal.TryParse(values[1], out decimal price) ? price : 0
-                                });
-                            }
-                            catch (Exception ex)
-                            {
-                                // Log any issues when parsing a specific line
-                                _logger.LogWarning(ex, "Error parsing line {LineNumber}: {Line}", lineNumber, line);
-                            }
+                                Date = values[0],
+                                MarketPrice = decimal.TryParse(values[1], out decimal price) ? price : 0
+                            });
+
                         }
                         else
                         {
@@ -83,7 +72,6 @@ namespace ProjectInterview.Services
             {
                 // Log any exceptions during the file parsing process
                 _logger.LogError(ex, "Error occurred while parsing the CSV file.");
-                throw; // Re-throw or handle the exception as per the requirement
             }
 
             return dataList; // Return the list of parsed data

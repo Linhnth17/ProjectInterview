@@ -28,3 +28,4 @@ C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview\obj\Debug\net8.0\r
 C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview\obj\Debug\net8.0\ProjectInterview.pdb
 C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview\obj\Debug\net8.0\ProjectInterview.genruntimeconfig.cache
 C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview\obj\Debug\net8.0\ref\ProjectInterview.dll
+C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview\obj\Debug\net8.0\ProjectInterview.sourcelink.json
