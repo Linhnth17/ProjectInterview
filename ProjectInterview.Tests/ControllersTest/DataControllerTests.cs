@@ -40,7 +40,7 @@ namespace ProjectInterview.Tests
         public void UploadCsv_ReturnsViewResult_WhenFileIsNull()
         {
             // Act
-            var result = _controller.UploadCsv(null);
+            var result = _controller.UploadCsv1(null);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -57,7 +57,7 @@ namespace ProjectInterview.Tests
             fileMock.Setup(f => f.Length).Returns(1);
 
             // Act
-            var result = _controller.UploadCsv(fileMock.Object);
+            var result = _controller.UploadCsv1(fileMock.Object);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);

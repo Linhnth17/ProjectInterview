@@ -68,10 +68,22 @@ namespace ProjectInterview.Controllers
         //}
 
         [HttpPost]
-        public List<DataEntry> UploadCsv1(IFormFile file)
+        public async Task<List<DataEntry>> UploadCsv1(IFormFile file)
         {
-            List<DataEntry> dataList = _csvService.ParseCsvFile(file.OpenReadStream());
-            return dataList;
+            if (file == null || file.Length == 0)
+            {
+                return new List<DataEntry>();
+            }
+            try
+            {
+                List<DataEntry> dataList = await _csvService.ParseCsvFileAsync(file.OpenReadStream());
+                return dataList;
+            }
+            catch (Exception ex) 
+            {
+                _logger.LogError(ex, "Error processing the CSV file.");
+                return new List<DataEntry>();
+            }
         }
 
     }

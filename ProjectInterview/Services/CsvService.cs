@@ -17,23 +17,34 @@ namespace ProjectInterview.Services
         }
 
         // Parses the CSV file and returns a list of DataEntry objects
-        public List<DataEntry> ParseCsvFile(Stream fileStream)
+        public async Task<List<DataEntry>> ParseCsvFileAsync(Stream fileStream)
         {
             List<DataEntry> dataList = new List<DataEntry>();
+            HashSet<string> seenDates = new HashSet<string>();
 
             try
             {
                 // Reads the CSV file line by line
                 using (var reader = new StreamReader(fileStream))
                 {
+                    // Read the entire file content asynchronously
+                    string fileContent = await reader.ReadToEndAsync();
+
+                    if (string.IsNullOrWhiteSpace(fileContent))
+                    {
+                        _logger.LogWarning("CSV file is empty.");
+                        return dataList;
+                    }
+
+                    var lines = fileContent.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
                     bool isHeader = true;
                     int lineNumber = 0;
 
                     // Iterate through each line in the CSV file
-                    while (!reader.EndOfStream)
+                    foreach (var line in lines)
                     {
                         lineNumber++;
-                        var line = reader.ReadLine();
 
                         // Skip the header line
                         if (isHeader)
@@ -44,37 +55,38 @@ namespace ProjectInterview.Services
 
                         var values = line.Split(',');
 
-                        // Log data being parsed
                         // Ensure the line has enough values to parse
                         if (values.Length >= 2)
                         {
+                            string date = values[0].Trim();
+                            decimal marketPrice = decimal.TryParse(values[1], out decimal price) ? price : 0;
 
-                            // Add parsed data to the list (Date and MarketPrice)
-                            dataList.Add(new DataEntry
+                            if (!seenDates.Contains(date))
                             {
-                                Date = values[0],
-                                MarketPrice = decimal.TryParse(values[1], out decimal price) ? price : 0
-                            });
+                                seenDates.Add(date);
 
-                        }
-                        else
-                        {
-                            // Log warning for invalid data format
-                            _logger.LogWarning("Invalid data format at line {LineNumber}: {Line}", lineNumber, line);
+                                dataList.Add(new DataEntry
+                                {
+                                    Date = date,
+                                    MarketPrice = marketPrice
+                                });
+                            }
+                            else
+                            {
+                                _logger.LogWarning("Duplicate entry ignored at line {LineNumber}: {Line}", lineNumber, line);
+                            }
                         }
                     }
-                }
 
-                // Log the number of records parsed successfully
-                _logger.LogInformation("CSV file parsing completed. {RecordCount} records parsed.", dataList.Count);
+                    _logger.LogInformation("CSV file parsing completed. {RecordCount} records parsed.", dataList.Count);
+                }
             }
             catch (Exception ex)
             {
-                // Log any exceptions during the file parsing process
                 _logger.LogError(ex, "Error occurred while parsing the CSV file.");
             }
 
-            return dataList; // Return the list of parsed data
+            return dataList; 
         }
     }
 }

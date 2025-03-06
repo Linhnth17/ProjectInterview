@@ -8,79 +8,118 @@
 
     <div id="main" style="display: none">
         <h3 class="text-center">CSV Data</h3>
-        <div class="input-group mb-3 w-50 mx-auto">
-            <select id="filterType" class="form-select">
-                <option value="marketPrice">Market Price</option>
-                <option value="date">Date</option>
-            </select>
-            <input type="text" id="filterInput" class="form-control" placeholder="Enter filter value...">
-            <button id="filterButton" class="btn btn-secondary">Filter</button>
-        </div>
-        <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-            <table id="dataTable" class="table table-striped table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th onclick="sortTable(0, 'date', this)">Date <span>↑↓</span></th>
-                        <th onclick="sortTable(1, 'numeric', this)">Market Price <span>↑↓</span></th>
-                    </tr>
-                </thead>
-                <tbody id="table-content">
-                </tbody>
-            </table>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex align-items-center gap-2">
+                <label for="startDate" class="fw-bold">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" class="form-control w-auto" value="2017-01-10">
+
+                <label for="endDate" class="fw-bold">End Date:</label>
+                <input type="date" id="endDate" name="endDate" class="form-control w-auto" value="2017-03-23">
+
+                <button id="filterButton" class="btn btn-primary">
+                    <i class="bi bi-filter"></i> Filter
+                </button>
+            </div>
+
+            <button id="toggleView" class="btn btn-secondary">
+                <i class="bi bi-toggle-off"></i> Switch to Chart
+            </button>
         </div>
 
-        <h3 class="text-center mt-4">Market Price Statistics</h3>
-        <div class="text-center">
-            <p>Minimum Market Price: <span id="minPrice">-</span></p>
-            <p>Maximum Market Price: <span id="maxPrice">-</span></p>
-            <p>Average Market Price: <span id="avgPrice">-</span></p>
-            <p>Most Expensive Hour Window: <span id="maxHourWindow">-</span></p>
-            <p>First Hour: <span id="firstHour">-</span></p>
-            <p>Second Hour: <span id="secondHour">-</span></p>
-        </div>
+        <div class="d-flex flex-wrap justify-content-between">
+            <div class="flex-grow-1 me-4" style="min-width: 400px;">
+                <div id="tableChartWrapper" class="w-100 border rounded bg-light p-3" style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
+                    <!-- Table Section -->
+                    <div id="tableContainer" class="table-responsive w-100 h-100" style="max-height: 400px; overflow-y: auto;">
+                        <h3 class="text-center">Market Price Table</h3>
+                        <table id="dataTable" class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th onclick="sortTable(0, 'date', this)">Date <span>↑↓</span></th>
+                                    <th onclick="sortTable(1, 'numeric', this)">Market Price <span>↑↓</span></th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-content">
+                            </tbody>
+                        </table>
+                    </div>
 
-        <h3 class="text-center mt-4">Market Price Charts</h3>
-        <div class="row">
-            <div class="col-md-6 d-flex flex-column align-items-center">
-                <canvas id="combinedChart"></canvas>
-                <p class="chart-title"><strong>Market Price Statistics</strong></p>
+                    <!-- Chart Section (Initially Hidden) -->
+                    <div id="chartContainer" class="w-100 h-100 text-center" style="display: none;">
+                        <h3 class="text-center">Market Price Trend</h3>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 d-flex flex-column align-items-center">
-                <canvas id="expensiveHourChart"></canvas>
-                <p class="chart-title"><strong>Most Expensive Hour Window</strong></p>
+
+            <!-- Right Side (Statistics) -->
+            <div class="p-4 border rounded bg-light shadow-sm"
+                 style="min-width: 300px; max-width: 350px; background: #f8f9fa;">
+                <h3 class="text-center fw-bold mb-3">Market Price Statistics</h3>
+
+                <ul class="list-unstyled mb-0">
+                    <li class="d-flex justify-content-between">
+                        <span class="fw-bold">Min Price:</span>
+                        <span id="minPrice" class="text-primary">-</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <span class="fw-bold">Max Price:</span>
+                        <span id="maxPrice" class="text-danger">-</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <span class="fw-bold">Avg Price:</span>
+                        <span id="avgPrice" class="text-success">-</span>
+                    </li>
+                    <hr>
+                    <li class="d-flex justify-content-between">
+                        <span class="fw-bold">Most Expensive Hour:</span>
+                        <span id="maxHourWindow" class="text-warning">-</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <span class="fw-bold">First Hour:</span>
+                        <span id="firstHour" class="text-secondary">-</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <span class="fw-bold">Second Hour:</span>
+                        <span id="secondHour" class="text-secondary">-</span>
+                    </li>
+                </ul>
             </div>
+
         </div>
     </div>
 </div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     let dataList = [];
 
     function renderDataTable() {
-        let filterType = document.getElementById("filterType").value;
-        let filterValue = document.getElementById("filterInput").value.trim().toLowerCase();
+        let startDate = document.getElementById("startDate").value;
+        let endDate = document.getElementById("endDate").value;
 
-        let filterList = dataList;
-        if (filterValue !== "") {
-            filterList = dataList.filter(item => {
-                let value = item[filterType] ?? "";
-                if (filterType === "marketPrice") {
-                    let filterNumber = parseFloat(filterValue);
-                    if (isNaN(filterNumber)) return false;
+        let startDateObj = startDate ? parseDate(startDate) : null;
+        let endDateObj = endDate ? parseDate(endDate) : null;
+        let filterList = dataList.filter(item => {
+            let itemDateObj = parseDate(item.date); 
+            let adjustedEndDate = endDateObj ? new Date(endDateObj) : null;
 
-                    let valueStr = value.toString();
-                    let filterStr = filterNumber.toString();
+            if (adjustedEndDate) {
+                adjustedEndDate.setDate(adjustedEndDate.getDate() + 1);
 
-                    return valueStr.startsWith(filterStr);
-                }
-                return value.toString().toLowerCase().includes(filterValue);
-            });
-        }
+            }
+            return (!startDateObj || itemDateObj >= startDateObj) && (!adjustedEndDate || itemDateObj < adjustedEndDate);
+        });
+
         let table = document.getElementById("table-content");
         let rowsHtml = filterList.map(item => `<tr><td>${item.date}</td><td>${item.marketPrice}</td></tr>`).join("");
 
         table.innerHTML = rowsHtml;
+
+        calculateStatistics(filterList);
+        renderLineChart(filterList)
     }
 
     document.getElementById("filterButton").addEventListener("click", function () {
@@ -90,6 +129,12 @@
     function uploadCsv() {
         let form = new FormData();
         let fileInput = document.getElementById("fileInput").files[0];
+
+        if (!fileInput) {
+            alert("Please choose a CSV file before uploading.");
+            return;
+        }
+
         form.append("file", fileInput);
 
         $.ajax({
@@ -99,16 +144,13 @@
             contentType: false,
             processData: false,
             success: function (response) {
-                console.log(response);
                 $("#errorMessage").addClass("d-none");
                 $("#csvTableContainer").html(response);
                 dataList = response;
                 if (dataList.length > 0) {
                     renderDataTable();
-                    calculateStatistics();
                     document.getElementById("main").style.display = "block";
                 }
-                // Cập nhật bảng CSV
             },
             error: function (xhr, status, error) {
                 $("#errorMessage").removeClass("d-none").text("Error: " + xhr.responseText);
@@ -117,15 +159,35 @@
     }
 
     function parseDate(dateStr) {
-        let parts = dateStr.split(/[\/-]/);
-        if (parts.length === 3) {
-            let day = parseInt(parts[0], 10);
-            let month = parseInt(parts[1], 10) - 1;
-            let year = parseInt(parts[2], 10);
-            return new Date(year, month, day);
+        if (!dateStr) return null;
+
+        let parts;
+        if (dateStr.includes("/")) {
+            parts = dateStr.split(" ");
+            let dateParts = parts[0].split("/"); 
+
+            let hours = 0, minutes = 0;
+
+            if (parts.length > 1 && parts[1].includes(":")) {
+                let timeParts = parts[1].split(":"); 
+                hours = parseInt(timeParts[0], 10);
+                minutes = parseInt(timeParts[1], 10);
+            }
+
+            return new Date(
+                parseInt(dateParts[2], 10),   
+                parseInt(dateParts[1], 10) - 1, 
+                parseInt(dateParts[0], 10),   
+                hours,                        
+                minutes                       
+            );
+        } else if (dateStr.includes("-")) {
+            parts = dateStr.split("-");
+            return new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
         }
-        return new Date(dateStr);
+        return null;
     }
+
 
     function sortTable(columnIndex, type, header) {
         let table = document.getElementById("dataTable");
@@ -157,11 +219,10 @@
         header.querySelector("span").innerHTML = ascending ? "↑" : "↓";
     }
 
-    function calculateStatistics() {
-        if (dataList.length === 0) return;
+    function calculateStatistics(filterList) {
+        if (filterList.length === 0) return;
 
-        // Extract only market prices
-        let prices = dataList.map(item => parseFloat(item.marketPrice)).filter(val => !isNaN(val));
+        let prices = filterList.map(item => parseFloat(item.marketPrice)).filter(val => !isNaN(val));
 
         if (prices.length === 0) return;
 
@@ -173,7 +234,6 @@
         document.getElementById("maxPrice").innerText = maxValue.toFixed(2);
         document.getElementById("avgPrice").innerText = avgValue.toFixed(2);
 
-        // Find the most expensive hour window (sum of two consecutive prices)
         let maxSum = 0;
         let firstDate = "", secondDate = "";
 
@@ -189,83 +249,83 @@
         document.getElementById("maxHourWindow").innerText = maxSum.toFixed(2);
         document.getElementById("firstHour").innerText = firstDate;
         document.getElementById("secondHour").innerText = secondDate;
-
-        renderCharts(minValue, maxValue, avgValue, maxSum, firstDate, secondDate);
     }
 
-    let combinedChartInstance = null;
-    let expensiveHourChartInstance = null;
-    function renderCharts(minValue, maxValue, avgValue, maxSum, firstDate, secondDate) {
-        let ctx1 = document.getElementById("combinedChart").getContext("2d");
-        let ctx2 = document.getElementById("expensiveHourChart").getContext("2d");
+    document.getElementById("toggleView").addEventListener("click", function () {
+        let tableContainer = document.getElementById("tableContainer");
+        let chartContainer = document.getElementById("chartContainer");
+        let button = document.getElementById("toggleView");
 
-        let firstMarketPrice = parseFloat(dataList.find(item => item.date === firstDate)?.marketPrice || 0);
-        let secondMarketPrice = parseFloat(dataList.find(item => item.date === secondDate)?.marketPrice || 0);
-
-
-        // Destroy existing charts if they exist
-        if (combinedChartInstance) {
-            combinedChartInstance.destroy();
+        if (tableContainer.style.display === "none") {
+            tableContainer.style.display = "block";
+            chartContainer.style.display = "none";
+            button.innerText = "Switch to Chart";
+        } else {
+            tableContainer.style.display = "none";
+            chartContainer.style.display = "block";
+            button.innerText = "Switch to Table";
         }
-        if (expensiveHourChartInstance) {
-            expensiveHourChartInstance.destroy();
+    });
+
+    function renderLineChart(filterList) {
+        if (!filterList || filterList.length === 0) {
+            console.log("No data to display in chart");
+            return;
         }
 
-        // Create new charts
-        combinedChartInstance = new Chart(ctx1, {
-            type: "bar",
-            data: {
-                labels: ["Min Price", "Max Price", "Avg Price"],
-                datasets: [{
-                    label: "Market Prices",
-                    data: [minValue, maxValue, avgValue],
-                    backgroundColor: [
-                        "rgba(255, 99, 132, 0.6)",
-                        "rgba(54, 162, 235, 0.6)",
-                        "rgba(75, 192, 192, 0.6)"
-                    ],
-                    borderColor: [
-                        "rgba(255, 99, 132, 1)",
-                        "rgba(54, 162, 235, 1)",
-                        "rgba(75, 192, 192, 1)"
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { beginAtZero: true }
-                }
-            }
-        });
+        filterList.sort((a, b) => parseDate(a.date) - parseDate(b.date));
 
-        expensiveHourChartInstance = new Chart(ctx2, {
-            type: "bar",
+        let labels = filterList.map(item => item.date);
+        let prices = filterList.map(item => parseFloat(item.marketPrice));
+
+        console.log(labels, prices);
+
+        let chartCanvas = document.getElementById("lineChart");
+
+        chartCanvas.style.height = "250px";
+        chartCanvas.style.width = "100%";
+
+        if (chartCanvas.chartInstance) {
+            chartCanvas.chartInstance.destroy();
+        }
+
+        let ctx = chartCanvas.getContext("2d");
+
+        chartCanvas.chartInstance = new Chart(ctx, {
+            type: "line",
             data: {
-                labels: ["First Hour (" + firstDate + ")", "Second Hour (" + secondDate + ")"],
+                labels: labels,
                 datasets: [{
                     label: "Market Price",
-                    data: [firstMarketPrice, secondMarketPrice],
-                    backgroundColor: ["rgba(255, 159, 64, 0.6)", "rgba(153, 102, 255, 0.6)"],
-                    borderColor: ["rgba(255, 159, 64, 1)", "rgba(153, 102, 255, 1)"],
-                    borderWidth: 1
+                    data: prices,
+                    borderColor: "blue",
+                    backgroundColor: "rgba(0, 0, 255, 0.1)",
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    pointBackgroundColor: "blue",
+                    tension: 0.4
                 }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: true, 
                 scales: {
+                    x: {
+                        title: { display: true, text: "Date" },
+                        ticks: { autoSkip: true, maxTicksLimit: 24 }, 
+                    },
                     y: {
-                        beginAtZero: true,
+                        title: { display: true, text: "Market Price ($)" },
+                        beginAtZero: false
                     }
                 },
                 plugins: {
-                    title: {
-                        display: true,
-                        text: "Most Expensive Hour Window (Total: " + maxSum.toFixed(2) + ")"
-                    }
+                    legend: { display: true },
+                    tooltip: { enabled: true }
                 }
             }
         });
     }
+
+
 </script>

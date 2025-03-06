@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\views\\data\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\views\\data\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\services\\csvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\services\\csvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,20 +15,36 @@
       "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\controllers\\datacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\models\\dataentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\models\\dataentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\views\\data\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\views\\data\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\models\\dataentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\models\\dataentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AE79AC6C-8ABB-4C9F-98BB-0FC21E946A48}|ProjectInterview.Tests\\ProjectInterview.Tests.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview.tests\\controllerstest\\datacontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AE79AC6C-8ABB-4C9F-98BB-0FC21E946A48}|ProjectInterview.Tests\\ProjectInterview.Tests.csproj|solutionrelative:projectinterview.tests\\controllerstest\\datacontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7773222C-8025-456A-811E-BC14E748D769}|ProjectInterview\\ProjectInterview.csproj|solutionrelative:projectinterview\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AE79AC6C-8ABB-4C9F-98BB-0FC21E946A48}|ProjectInterview.Tests\\ProjectInterview.Tests.csproj|c:\\users\\admin\\source\\repos\\projectinterview\\projectinterview.tests\\projectinterview.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -46,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -55,6 +67,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\appsettings.json",
+              "RelativeDocumentMoniker": "ProjectInterview\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\appsettings.json",
+              "RelativeToolTip": "ProjectInterview\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-06T04:38:24.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "ProjectInterview\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Properties\\launchSettings.json",
+              "RelativeToolTip": "ProjectInterview\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-06T04:37:41.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "ProjectInterview\\Views\\_ViewImports.cshtml",
@@ -62,25 +100,24 @@
               "RelativeToolTip": "ProjectInterview\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-28T07:27:40.434Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-28T07:27:40.434Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Views\\Data\\Index.cshtml",
               "RelativeDocumentMoniker": "ProjectInterview\\Views\\Data\\Index.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Views\\Data\\Index.cshtml",
               "RelativeToolTip": "ProjectInterview\\Views\\Data\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAcwJIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-02-28T06:36:34.363Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Program.cs",
               "RelativeDocumentMoniker": "ProjectInterview\\Program.cs",
@@ -88,23 +125,24 @@
               "RelativeToolTip": "ProjectInterview\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T06:36:17.848Z"
+              "WhenOpened": "2025-02-28T06:36:17.848Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "DataControllerTests.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview.Tests\\ControllersTest\\DataControllerTests.cs",
               "RelativeDocumentMoniker": "ProjectInterview.Tests\\ControllersTest\\DataControllerTests.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview.Tests\\ControllersTest\\DataControllerTests.cs",
               "RelativeToolTip": "ProjectInterview.Tests\\ControllersTest\\DataControllerTests.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowDMAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwDsAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-28T06:07:03.462Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "ProjectInterview.Tests.csproj",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview.Tests\\ProjectInterview.Tests.csproj",
               "RelativeDocumentMoniker": "ProjectInterview.Tests\\ProjectInterview.Tests.csproj",
@@ -116,46 +154,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ICsvService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Services\\ICsvService.cs",
               "RelativeDocumentMoniker": "ProjectInterview\\Services\\ICsvService.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Services\\ICsvService.cs",
               "RelativeToolTip": "ProjectInterview\\Services\\ICsvService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-28T03:53:18.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CsvService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Services\\CsvService.cs",
-              "RelativeDocumentMoniker": "ProjectInterview\\Services\\CsvService.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Services\\CsvService.cs",
-              "RelativeToolTip": "ProjectInterview\\Services\\CsvService.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAADgvxMAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T03:53:17.92Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "DataController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Controllers\\DataController.cs",
               "RelativeDocumentMoniker": "ProjectInterview\\Controllers\\DataController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Controllers\\DataController.cs*",
-              "RelativeToolTip": "ProjectInterview\\Controllers\\DataController.cs*",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAWwEgAAAAzAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Controllers\\DataController.cs",
+              "RelativeToolTip": "ProjectInterview\\Controllers\\DataController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAE4AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-28T03:53:12.836Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "CsvService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Services\\CsvService.cs",
+              "RelativeDocumentMoniker": "ProjectInterview\\Services\\CsvService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Services\\CsvService.cs",
+              "RelativeToolTip": "ProjectInterview\\Services\\CsvService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowBYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T03:53:17.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "ProjectInterview\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\appsettings.Development.json",
+              "RelativeToolTip": "ProjectInterview\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-06T04:38:24.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "DataEntry.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\ProjectInterview\\ProjectInterview\\Models\\DataEntry.cs",
               "RelativeDocumentMoniker": "ProjectInterview\\Models\\DataEntry.cs",
@@ -163,8 +214,7 @@
               "RelativeToolTip": "ProjectInterview\\Models\\DataEntry.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T03:53:11.471Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-28T03:53:11.471Z"
             }
           ]
         }

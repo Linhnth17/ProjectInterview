@@ -9,6 +9,6 @@ namespace ProjectInterview.Services
     {
         // Method that takes a Stream (file data) and returns a List of DataEntry objects
         // after parsing the CSV file.
-        List<DataEntry> ParseCsvFile(Stream fileStream);
+        Task<List<DataEntry>> ParseCsvFileAsync(Stream fileStream);
     }
 }
