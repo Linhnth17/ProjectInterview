@@ -31,7 +31,7 @@
                 <div id="tableChartWrapper" class="w-100 border rounded bg-light p-3" style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
                     <!-- Table Section -->
                     <div id="tableContainer" class="table-responsive w-100 h-100" style="max-height: 400px; overflow-y: auto;">
-                        <h3 class="text-center">Market Price Table</h3>
+                        <h3 class="text-center">Market Price EX1 Table</h3>
                         <table id="dataTable" class="table table-striped table-bordered">
                             <thead class="table-dark">
                                 <tr>
@@ -46,7 +46,7 @@
 
                     <!-- Chart Section (Initially Hidden) -->
                     <div id="chartContainer" class="w-100 h-100 text-center" style="display: none;">
-                        <h3 class="text-center">Market Price Trend</h3>
+                        <h3 class="text-center">Market Price EX1 Chart</h3>
                         <canvas id="lineChart"></canvas>
                     </div>
                 </div>
@@ -73,19 +73,17 @@
                     <hr>
                     <li class="d-flex justify-content-between">
                         <span class="fw-bold">Most Expensive Hour:</span>
-                        <span id="maxHourWindow" class="text-warning">-</span>
                     </li>
                     <li class="d-flex justify-content-between">
-                        <span class="fw-bold">First Hour:</span>
+                        <span class="fw-bold">From: </span>
                         <span id="firstHour" class="text-secondary">-</span>
                     </li>
                     <li class="d-flex justify-content-between">
-                        <span class="fw-bold">Second Hour:</span>
+                        <span class="fw-bold">To: </span>
                         <span id="secondHour" class="text-secondary">-</span>
                     </li>
                 </ul>
             </div>
-
         </div>
     </div>
 </div>
@@ -245,8 +243,6 @@
                 secondDate = dataList[i + 1].date;
             }
         }
-
-        document.getElementById("maxHourWindow").innerText = maxSum.toFixed(2);
         document.getElementById("firstHour").innerText = firstDate;
         document.getElementById("secondHour").innerText = secondDate;
     }
@@ -267,7 +263,7 @@
         }
     });
 
-    function renderLineChart(filterList) {
+    function renderLineChart(filterList) {      
         if (!filterList || filterList.length === 0) {
             console.log("No data to display in chart");
             return;
@@ -277,8 +273,6 @@
 
         let labels = filterList.map(item => item.date);
         let prices = filterList.map(item => parseFloat(item.marketPrice));
-
-        console.log(labels, prices);
 
         let chartCanvas = document.getElementById("lineChart");
 
@@ -301,7 +295,7 @@
                     borderColor: "blue",
                     backgroundColor: "rgba(0, 0, 255, 0.1)",
                     borderWidth: 2,
-                    pointRadius: 0,
+                    pointRadius: 1,
                     pointBackgroundColor: "blue",
                     tension: 0.4
                 }]
@@ -315,7 +309,7 @@
                         ticks: { autoSkip: true, maxTicksLimit: 24 }, 
                     },
                     y: {
-                        title: { display: true, text: "Market Price ($)" },
+                        title: { display: true, text: "Market Price" },
                         beginAtZero: false
                     }
                 },

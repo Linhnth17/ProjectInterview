@@ -74,12 +74,18 @@ namespace ProjectInterview.Controllers
             {
                 return new List<DataEntry>();
             }
+            if (!file.ContentType.Equals("text/csv", StringComparison.OrdinalIgnoreCase) &&
+                    !file.FileName.EndsWith(".csv", StringComparison.OrdinalIgnoreCase))
+            {
+                _logger.LogWarning("Invalid file type. Only CSV files are allowed.");
+                return new List<DataEntry>();
+            }
             try
             {
                 List<DataEntry> dataList = await _csvService.ParseCsvFileAsync(file.OpenReadStream());
                 return dataList;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _logger.LogError(ex, "Error processing the CSV file.");
                 return new List<DataEntry>();

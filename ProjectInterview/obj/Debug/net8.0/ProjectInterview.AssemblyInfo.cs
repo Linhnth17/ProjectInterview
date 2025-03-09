@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectInterview")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+160a68476f0026435b44b48eeb6903e4b7c3c4a5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e3eacf3465fcd389c2fc0df88421b6804d0e50c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectInterview")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectInterview")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

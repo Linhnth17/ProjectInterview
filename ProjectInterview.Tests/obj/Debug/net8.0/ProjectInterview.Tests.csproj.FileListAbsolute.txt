@@ -108,3 +108,5 @@ C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview.Tests\obj\Debug\ne
 C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview.Tests\obj\Debug\net8.0\ProjectInterview.Tests.pdb
 C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview.Tests\obj\Debug\net8.0\ProjectInterview.Tests.genruntimeconfig.cache
 C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview.Tests\obj\Debug\net8.0\ref\ProjectInterview.Tests.dll
+C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview.Tests\obj\Debug\net8.0\ProjectInterview.Tests.sourcelink.json
+C:\Users\Admin\source\repos\ProjectInterview\ProjectInterview.Tests\bin\Debug\net8.0\TestData\TestData.csv
